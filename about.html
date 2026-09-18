@@ -352,30 +352,28 @@
       margin-bottom: 10px;
     }
 
-    /* Locked state styling */
+    /* Strictly Locked Beacons Button */
     .beacons-btn.locked {
-      background: #888888;
+      background: #999999;
       color: #ffffff;
       cursor: not-allowed;
       pointer-events: none;
-      opacity: 0.7;
       box-shadow: none;
+      opacity: 0.75;
     }
 
-    /* Unlocked state styling */
+    /* Unlocked Beacons Button */
     .beacons-btn.unlocked {
       background: #111111;
       color: #ffffff;
       cursor: pointer;
-      pointer-events: auto;
-      opacity: 1;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.22);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.25);
       animation: pulseGlow 1.5s infinite alternate;
     }
 
     @keyframes pulseGlow {
       from { transform: scale(1); box-shadow: 0 6px 18px rgba(0,0,0,0.2); }
-      to { transform: scale(1.02); box-shadow: 0 10px 25px rgba(255, 105, 180, 0.4); }
+      to { transform: scale(1.02); box-shadow: 0 10px 25px rgba(255, 105, 180, 0.5); }
     }
 
     .back-btn {
@@ -461,7 +459,7 @@
 
       <!-- Game 2: Tile Match -->
       <div id="tab2" class="game-tab">
-        <p style="font-size:0.78rem; color:#666; margin-bottom:10px;">Win the tile game to unlock my Beacons profile!</p>
+        <p style="font-size:0.78rem; color:#666; margin-bottom:10px;">Win the tile game to securely unlock my Beacons profile!</p>
         <div class="match-grid" id="matchGrid"></div>
         <p id="gameStatus" style="font-size:0.8rem; font-weight:600; color:#333; margin-top:6px;"></p>
       </div>
@@ -484,12 +482,14 @@
       </div>
     </div>
 
-    <!-- Beacons Button (Initially Locked) -->
-    <a href="https://beacons.ai/pathumahh" target="_blank" id="beaconsBtn" class="beacons-btn locked">🔒 Win Tile Match to Unlock Beacons!</a>
+    <!-- Beacons Button (Strictly Locked Initially) -->
+    <a href="#" id="beaconsBtn" class="beacons-btn locked" onclick="checkUnlock(event)">🔒 Win Tile Match to Unlock Beacons!</a>
     <a href="index.html" class="back-btn">⬅ Back to Home</a>
   </div>
 
   <script>
+    let isUnlocked = false;
+
     // Tab Switching Logic
     function switchGame(tabId, btn) {
       document.querySelectorAll('.game-tab').forEach(tab => tab.classList.remove('active'));
@@ -537,7 +537,7 @@
     }
 
     function flipTile(tile) {
-      if (tile.classList.contains('flipped') || flipped.length === 2) return;
+      if (isUnlocked || tile.classList.contains('flipped') || flipped.length === 2) return;
       
       tile.innerText = tile.dataset.symbol;
       tile.classList.add('flipped');
@@ -548,7 +548,8 @@
           matched += 2;
           flipped = [];
           if (matched === items.length) {
-            document.getElementById('gameStatus').innerText = '🎉 Unlocked! Click below to visit my Beacons! ✨';
+            isUnlocked = true;
+            document.getElementById('gameStatus').innerText = '🎉 Unlocked! Beacons button is ready! ✨';
             unlockBeacons();
           }
         } else {
@@ -565,9 +566,18 @@
 
     function unlockBeacons() {
       const btn = document.getElementById('beaconsBtn');
+      btn.href = 'https://beacons.ai/pathumahh';
+      btn.target = '_blank';
       btn.classList.remove('locked');
       btn.classList.add('unlocked');
       btn.innerHTML = 'Visit My Beacons 🔗✨';
+    }
+
+    function checkUnlock(event) {
+      if (!isUnlocked) {
+        event.preventDefault();
+        alert('🌸 Oops! You need to win the Tile Match game first to unlock my Beacons profile!');
+      }
     }
 
     // Initialize tile game on start
