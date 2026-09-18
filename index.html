@@ -3,74 +3,148 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home - Fathima Zemar</title>
+  <title>Fathima Zemar ✨</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@500;700&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
   <style>
-    body {
+    * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
       background: url('leopard-bg.jpg') no-repeat center center fixed;
       background-size: cover;
-      color: #333;
+      color: #2D2424;
       display: flex;
       justify-content: center;
       align-items: center;
       min-height: 100vh;
+      padding: 20px;
     }
 
-    .container {
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(5px);
-      padding: 40px 30px;
-      border-radius: 20px;
+    .card {
+      background: rgba(255, 255, 255, 0.78);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      padding: 42px 28px;
+      border-radius: 36px;
       text-align: center;
-      max-width: 400px;
-      width: 90%;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      max-width: 380px;
+      width: 100%;
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18), inset 0 0 15px rgba(255, 255, 255, 0.5);
+      animation: floatUp 1s ease-out;
+      position: relative;
+    }
+
+    @keyframes floatUp {
+      from { opacity: 0; transform: translateY(30px) scale(0.95); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .badge {
+      display: inline-block;
+      background: rgba(0, 0, 0, 0.06);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: #555;
+    }
+
+    .avatar-wrapper {
+      position: relative;
+      display: inline-block;
+      margin: 10px 0 20px;
     }
 
     .avatar {
-      width: 150px;
+      width: 165px;
       height: auto;
-      margin-bottom: 15px;
+      display: block;
+      margin: 0 auto;
+      filter: drop-shadow(0 10px 15px rgba(0,0,0,0.15));
+      animation: gentleBounce 3s ease-in-out infinite;
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .avatar:hover {
+      transform: scale(1.08) rotate(-3deg);
+    }
+
+    @keyframes gentleBounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
     }
 
     h1 {
-      margin-top: 0;
-      font-size: 1.8rem;
+      font-family: 'Comfortaa', cursive;
+      font-size: 1.7rem;
+      color: #1A1A1A;
+      margin-bottom: 12px;
+      font-weight: 700;
     }
 
     p {
       font-size: 0.95rem;
-      line-height: 1.5;
-      margin-bottom: 25px;
+      line-height: 1.6;
+      color: #4A403A;
+      margin-bottom: 28px;
+      font-weight: 400;
     }
 
     .button {
-      display: inline-block;
-      padding: 12px 24px;
-      background-color: #000;
-      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      padding: 16px 24px;
+      background: #111111;
+      color: #FFFFFF;
       text-decoration: none;
-      border-radius: 25px;
-      font-weight: bold;
-      transition: transform 0.2s ease, background-color 0.2s ease;
+      border-radius: 50px;
+      font-family: 'Comfortaa', cursive;
+      font-weight: 700;
+      font-size: 0.92rem;
+      letter-spacing: 0.5px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+      transition: all 0.3s ease;
     }
 
     .button:hover {
-      background-color: #333;
-      transform: scale(1.05);
+      background: #333333;
+      transform: translateY(-3px);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.35);
+    }
+
+    .sparkle {
+      font-size: 1.1rem;
     }
   </style>
 </head>
 <body>
 
-  <div class="container">
-    <img src="doll-removebg-preview.png" alt="Me" class="avatar">
-    <h1>Welcome to My Page</h1>
-    <p>Hi! Welcome to Fathima zemar's personal aesthetic corner of her web.</p>
+  <div class="card">
+    <span class="badge">Welcome</span>
     
-    <a href="about.html" class="button">Know More About Me</a>
+    <div class="avatar-wrapper">
+      <img src="doll-removebg-preview.png" alt="Avatar" class="avatar">
+    </div>
+
+    <h1>Fathima Zemar</h1>
+    <p>Step into my personal corner of the web ✨</p>
+    
+    <a href="about.html" class="button">
+      Know More About Me <span class="sparkle">➔</span>
+    </a>
   </div>
 
 </body>
