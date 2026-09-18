@@ -32,9 +32,9 @@
       background: rgba(255, 255, 255, 0.85);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      padding: 50px 30px 35px;
+      padding: 50px 25px 35px;
       border-radius: 35px;
-      max-width: 420px;
+      max-width: 440px;
       width: 100%;
       border: 2px solid rgba(255, 255, 255, 0.8);
       box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
@@ -95,13 +95,6 @@
       50% { transform: translateY(-5px) rotate(-10deg); }
     }
 
-    /* Coquette Bow Sticker */
-    .bow-sticker {
-      font-size: 1.5rem;
-      display: inline-block;
-      margin-bottom: 5px;
-    }
-
     /* Polaroid Frame */
     .polaroid {
       background: #ffffff;
@@ -110,7 +103,7 @@
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
       transform: rotate(-2.5deg);
       display: inline-block;
-      margin: 10px 0 20px;
+      margin: 10px 0 18px;
       transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
@@ -119,8 +112,8 @@
     }
 
     .polaroid img {
-      width: 185px;
-      height: 185px;
+      width: 175px;
+      height: 175px;
       object-fit: cover;
       border-radius: 4px;
     }
@@ -140,32 +133,64 @@
     }
 
     .letter-text {
-      font-size: 0.95rem;
+      font-size: 0.92rem;
       line-height: 1.6;
       color: #444;
       background: rgba(255, 255, 255, 0.6);
-      padding: 18px 20px;
-      border-radius: 22px;
-      margin-bottom: 25px;
+      padding: 16px 18px;
+      border-radius: 20px;
+      margin-bottom: 20px;
       text-align: left;
       border: 1px dashed rgba(0, 0, 0, 0.15);
-      box-shadow: inset 0 2px 4px rgba(255,255,255,0.8);
     }
 
-    /* Music Section */
+    /* Info Grid Section (Myself, Hobbies, Interests, My Type) */
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 22px;
+    }
+
+    .info-box {
+      background: rgba(255, 255, 255, 0.7);
+      padding: 14px 12px;
+      border-radius: 18px;
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      text-align: left;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    }
+
+    .info-box h3 {
+      font-family: 'Comfortaa', cursive;
+      font-size: 0.85rem;
+      color: #222;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .info-box p {
+      font-size: 0.82rem;
+      color: #555;
+      line-height: 1.4;
+    }
+
+    /* Music Section (Moved to Bottom) */
     .music-section {
       background: rgba(255, 255, 255, 0.75);
-      padding: 22px 20px;
+      padding: 20px 18px;
       border-radius: 25px;
       border: 1px solid rgba(255, 255, 255, 0.9);
-      margin-bottom: 25px;
+      margin-bottom: 22px;
       box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     }
 
     .music-header {
       font-family: 'Comfortaa', cursive;
-      font-size: 1.1rem;
-      margin-bottom: 16px;
+      font-size: 1.05rem;
+      margin-bottom: 14px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -174,7 +199,7 @@
     }
 
     .track {
-      margin-bottom: 16px;
+      margin-bottom: 14px;
       text-align: left;
     }
 
@@ -183,15 +208,15 @@
     }
 
     .track p {
-      font-size: 0.85rem;
+      font-size: 0.83rem;
       font-weight: 600;
-      margin-bottom: 6px;
+      margin-bottom: 5px;
       color: #333;
     }
 
     audio {
       width: 100%;
-      height: 38px;
+      height: 36px;
       border-radius: 20px;
     }
 
@@ -199,25 +224,24 @@
     .beacons-btn, .back-btn {
       display: block;
       width: 100%;
-      padding: 15px;
+      padding: 14px;
       border-radius: 50px;
       font-weight: 600;
       text-decoration: none;
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       transition: all 0.3s ease;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
 
     .beacons-btn {
       background: #111111;
       color: #ffffff;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.22);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.2);
     }
 
     .beacons-btn:hover {
       background: #2b2b2b;
       transform: translateY(-2px);
-      box-shadow: 0 8px 22px rgba(0,0,0,0.3);
     }
 
     .back-btn {
@@ -241,21 +265,42 @@
     <span class="flower-lily-topleft">⚜️</span>
     <span class="flower-lily-topright">🌸</span>
 
+    <!-- Polaroid Picture -->
     <div class="polaroid">
       <img src="3.jpg" alt="Profile Picture">
       <div class="polaroid-caption">fathima zemar ✨</div>
     </div>
 
-    <div>
-      <span class="bow-sticker">🎀</span>
-      <h1>about me 🌷</h1>
-    </div>
+    <h1>about me 🌷</h1>
 
     <div class="letter-text">
-      <p>Hey there! Welcome to my small corner of the internet. I love music, aesthetic vibes, soft florals, and creating pretty things. Thanks for stopping by! 🤍</p>
+      <p>Hey there! Welcome to my small corner of the internet. Here is a little peek into my world 🤍</p>
     </div>
 
-    <!-- Music Player Section -->
+    <!-- Personal Info Grid -->
+    <div class="info-grid">
+      <div class="info-box">
+        <h3>🎀 myself</h3>
+        <p>A creative soul who loves aesthetics, soft vibes, and self-expression.</p>
+      </div>
+
+      <div class="info-box">
+        <h3>🎨 hobbies</h3>
+        <p>Listening to music, photo editing, journaling, and digital design.</p>
+      </div>
+
+      <div class="info-box">
+        <h3>✨ interests</h3>
+        <p>Fashion trends, Pinterest aesthetics, playlist curating, and tech.</p>
+      </div>
+
+      <div class="info-box">
+        <h3>🤍 my type</h3>
+        <p>Kind-hearted, loyal, thoughtful people with a cute sense of humor.</p>
+      </div>
+    </div>
+
+    <!-- Playlist Section (Moved to Bottom) -->
     <div class="music-section">
       <div class="music-header">
         <span>🎧</span> my fav playlist 🌺
