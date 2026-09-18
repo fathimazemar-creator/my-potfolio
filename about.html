@@ -26,12 +26,13 @@
       padding: 40px 20px;
     }
 
+    /* Main Glass Card */
     .card {
       position: relative;
       background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(15px);
-      -webkit-backdrop-filter: blur(15px);
-      padding: 45px 30px 35px;
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      padding: 50px 30px 35px;
       border-radius: 35px;
       max-width: 420px;
       width: 100%;
@@ -40,79 +41,100 @@
       text-align: center;
     }
 
+    /* Tape Stickers */
     .tape-top {
       position: absolute;
-      top: -15px;
+      top: -14px;
       left: 50%;
-      transform: translateX(-50%) rotate(-2deg);
-      width: 110px;
+      transform: translateX(-50%) rotate(-1.5deg);
+      width: 120px;
       height: 28px;
-      background: rgba(255, 255, 255, 0.6);
-      border-left: 2px dashed rgba(0,0,0,0.1);
-      border-right: 2px dashed rgba(0,0,0,0.1);
-      box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+      background: rgba(255, 255, 255, 0.7);
+      border-left: 2px dashed rgba(0,0,0,0.12);
+      border-right: 2px dashed rgba(0,0,0,0.12);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      z-index: 5;
     }
 
     .tape-corner {
       position: absolute;
       bottom: -10px;
-      right: 20px;
-      width: 80px;
-      height: 22px;
-      background: rgba(255, 228, 225, 0.7);
-      transform: rotate(-8deg);
+      right: 25px;
+      width: 85px;
+      height: 24px;
+      background: rgba(255, 228, 225, 0.75);
+      transform: rotate(-6deg);
       border-left: 2px dashed rgba(0,0,0,0.1);
       border-right: 2px dashed rgba(0,0,0,0.1);
+      z-index: 5;
     }
 
-    .flower-sticker-1 {
+    /* Lily Flower Sticker Overlays */
+    .flower-lily-topleft {
       position: absolute;
-      top: 15px;
-      left: 15px;
-      font-size: 1.8rem;
-      transform: rotate(-12deg);
+      top: 10px;
+      left: 12px;
+      font-size: 2.2rem;
+      filter: drop-shadow(0 3px 6px rgba(0,0,0,0.12));
+      transform: rotate(-15deg);
+      animation: floatSlow 4s ease-in-out infinite;
     }
 
-    .flower-sticker-2 {
+    .flower-lily-topright {
       position: absolute;
-      top: 15px;
-      right: 15px;
-      font-size: 1.8rem;
+      top: 12px;
+      right: 12px;
+      font-size: 2.2rem;
+      filter: drop-shadow(0 3px 6px rgba(0,0,0,0.12));
       transform: rotate(15deg);
+      animation: floatSlow 4s ease-in-out infinite 2s;
     }
 
+    @keyframes floatSlow {
+      0%, 100% { transform: translateY(0) rotate(-15deg); }
+      50% { transform: translateY(-5px) rotate(-10deg); }
+    }
+
+    /* Coquette Bow Sticker */
+    .bow-sticker {
+      font-size: 1.5rem;
+      display: inline-block;
+      margin-bottom: 5px;
+    }
+
+    /* Polaroid Frame */
     .polaroid {
       background: #ffffff;
       padding: 12px 12px 25px 12px;
       border-radius: 8px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-      transform: rotate(-3deg);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      transform: rotate(-2.5deg);
       display: inline-block;
       margin: 10px 0 20px;
-      transition: transform 0.3s ease;
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
     .polaroid:hover {
-      transform: rotate(0deg) scale(1.03);
+      transform: rotate(0deg) scale(1.04);
     }
 
     .polaroid img {
-      width: 180px;
-      height: 180px;
+      width: 185px;
+      height: 185px;
       object-fit: cover;
       border-radius: 4px;
     }
 
     .polaroid-caption {
       font-family: 'Caveat', cursive;
-      font-size: 1.4rem;
-      color: #444;
+      font-size: 1.45rem;
+      color: #333;
       margin-top: 8px;
     }
 
     h1 {
       font-family: 'Comfortaa', cursive;
-      font-size: 1.6rem;
+      font-size: 1.65rem;
       margin-bottom: 12px;
       color: #1a1a1a;
     }
@@ -121,34 +143,38 @@
       font-size: 0.95rem;
       line-height: 1.6;
       color: #444;
-      background: rgba(255, 255, 255, 0.5);
-      padding: 18px;
-      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.6);
+      padding: 18px 20px;
+      border-radius: 22px;
       margin-bottom: 25px;
       text-align: left;
-      border: 1px dashed #ccc;
+      border: 1px dashed rgba(0, 0, 0, 0.15);
+      box-shadow: inset 0 2px 4px rgba(255,255,255,0.8);
     }
 
+    /* Music Section */
     .music-section {
-      background: rgba(255, 255, 255, 0.7);
-      padding: 20px;
+      background: rgba(255, 255, 255, 0.75);
+      padding: 22px 20px;
       border-radius: 25px;
       border: 1px solid rgba(255, 255, 255, 0.9);
       margin-bottom: 25px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     }
 
     .music-header {
       font-family: 'Comfortaa', cursive;
       font-size: 1.1rem;
-      margin-bottom: 15px;
+      margin-bottom: 16px;
       display: flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
+      color: #222;
     }
 
     .track {
-      margin-bottom: 15px;
+      margin-bottom: 16px;
       text-align: left;
     }
 
@@ -165,41 +191,43 @@
 
     audio {
       width: 100%;
-      height: 36px;
+      height: 38px;
       border-radius: 20px;
     }
 
+    /* Buttons */
     .beacons-btn, .back-btn {
       display: block;
       width: 100%;
-      padding: 14px;
+      padding: 15px;
       border-radius: 50px;
       font-weight: 600;
       text-decoration: none;
-      font-size: 0.9rem;
+      font-size: 0.92rem;
       transition: all 0.3s ease;
       margin-bottom: 12px;
     }
 
     .beacons-btn {
-      background: #000;
-      color: #fff;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      background: #111111;
+      color: #ffffff;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.22);
     }
 
     .beacons-btn:hover {
-      background: #222;
+      background: #2b2b2b;
       transform: translateY(-2px);
+      box-shadow: 0 8px 22px rgba(0,0,0,0.3);
     }
 
     .back-btn {
-      background: rgba(255, 255, 255, 0.8);
+      background: rgba(255, 255, 255, 0.85);
       color: #333;
-      border: 1px solid #ddd;
+      border: 1px solid rgba(0,0,0,0.1);
     }
 
     .back-btn:hover {
-      background: #fff;
+      background: #ffffff;
     }
   </style>
 </head>
@@ -209,20 +237,25 @@
     <div class="tape-top"></div>
     <div class="tape-corner"></div>
     
-    <span class="flower-sticker-1">🪷</span>
-    <span class="flower-sticker-2">🌸</span>
+    <!-- Lily & Floral Stickers -->
+    <span class="flower-lily-topleft">⚜️</span>
+    <span class="flower-lily-topright">🌸</span>
 
     <div class="polaroid">
       <img src="3.jpg" alt="Profile Picture">
       <div class="polaroid-caption">fathima zemar ✨</div>
     </div>
 
-    <h1>about me 🌷</h1>
-
-    <div class="letter-text">
-      <p>Hey there! Welcome to my small corner of the internet. I love music, aesthetic vibes, and creating pretty things. Thanks for stopping by! 🤍</p>
+    <div>
+      <span class="bow-sticker">🎀</span>
+      <h1>about me 🌷</h1>
     </div>
 
+    <div class="letter-text">
+      <p>Hey there! Welcome to my small corner of the internet. I love music, aesthetic vibes, soft florals, and creating pretty things. Thanks for stopping by! 🤍</p>
+    </div>
+
+    <!-- Music Player Section -->
     <div class="music-section">
       <div class="music-header">
         <span>🎧</span> my fav playlist 🌺
@@ -239,7 +272,7 @@
       </div>
     </div>
 
-    <a href="https://beacons.ai" target="_blank" class="beacons-btn">Visit My Beacons 🔗</a>
+    <a href="https://beacons.ai/pathumahh" target="_blank" class="beacons-btn">Visit My Beacons 🔗</a>
     <a href="index.html" class="back-btn">⬅ Back to Home</a>
   </div>
 
