@@ -95,16 +95,16 @@
       50% { transform: translateY(-5px) rotate(-10deg); }
     }
 
-    /* Polaroid Frame & Drag Area */
+    /* Polaroid Booth Area */
     .polaroid-container {
       position: relative;
       display: inline-block;
-      margin: 10px 0 18px;
+      margin: 10px 0 12px;
     }
 
     .polaroid {
       background: #ffffff;
-      padding: 12px 12px 25px 12px;
+      padding: 12px 12px 22px 12px;
       border-radius: 8px;
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
       transform: rotate(-2.5deg);
@@ -114,44 +114,73 @@
     }
 
     .polaroid img {
-      width: 175px;
-      height: 175px;
+      width: 170px;
+      height: 170px;
       object-fit: cover;
       border-radius: 4px;
       pointer-events: none;
+      transition: filter 0.3s ease;
     }
+
+    .filter-sepia img { filter: sepia(0.6) contrast(1.1); }
+    .filter-pink img { filter: hue-rotate(300deg) saturate(1.4) brightness(1.05); }
+    .filter-bw img { filter: grayscale(100%) contrast(1.2); }
 
     .polaroid-caption {
       font-family: 'Caveat', cursive;
-      font-size: 1.45rem;
+      font-size: 1.4rem;
       color: #333;
-      margin-top: 8px;
+      margin-top: 6px;
     }
 
     .sticker-overlay {
       position: absolute;
-      font-size: 1.8rem;
+      font-size: 1.7rem;
       cursor: grab;
       user-select: none;
       z-index: 10;
       filter: drop-shadow(0 2px 5px rgba(0,0,0,0.2));
     }
 
+    .booth-controls {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .booth-btn {
+      background: rgba(255, 255, 255, 0.8);
+      border: 1px solid #ddd;
+      padding: 5px 10px;
+      border-radius: 12px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .booth-btn:hover {
+      background: #fff;
+      transform: translateY(-1px);
+    }
+
     h1 {
       font-family: 'Comfortaa', cursive;
-      font-size: 1.65rem;
-      margin-bottom: 12px;
+      font-size: 1.6rem;
+      margin-bottom: 10px;
       color: #1a1a1a;
     }
 
     .letter-text {
-      font-size: 0.92rem;
+      font-size: 0.9rem;
       line-height: 1.6;
       color: #444;
       background: rgba(255, 255, 255, 0.6);
       padding: 14px 18px;
       border-radius: 20px;
-      margin-bottom: 20px;
+      margin-bottom: 18px;
       text-align: left;
       border: 1px dashed rgba(0, 0, 0, 0.15);
     }
@@ -160,14 +189,14 @@
     .info-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin-bottom: 22px;
+      gap: 10px;
+      margin-bottom: 18px;
     }
 
     .info-box {
       background: rgba(255, 255, 255, 0.7);
-      padding: 14px 12px;
-      border-radius: 18px;
+      padding: 12px 10px;
+      border-radius: 16px;
       border: 1px solid rgba(255, 255, 255, 0.9);
       text-align: left;
       box-shadow: 0 4px 12px rgba(0,0,0,0.03);
@@ -175,53 +204,48 @@
 
     .info-box h3 {
       font-family: 'Comfortaa', cursive;
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       color: #222;
-      margin-bottom: 6px;
-      display: flex;
-      align-items: center;
-      gap: 5px;
+      margin-bottom: 4px;
     }
 
     .info-box p {
-      font-size: 0.82rem;
+      font-size: 0.78rem;
       color: #555;
-      line-height: 1.4;
+      line-height: 1.35;
     }
 
     /* Games Dashboard */
     .games-section {
       background: rgba(255, 255, 255, 0.8);
-      padding: 18px;
-      border-radius: 25px;
+      padding: 16px;
+      border-radius: 22px;
       border: 1px solid rgba(255, 255, 255, 0.9);
-      margin-bottom: 22px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      margin-bottom: 18px;
     }
 
     .games-title {
       font-family: 'Comfortaa', cursive;
-      font-size: 1.05rem;
-      margin-bottom: 12px;
+      font-size: 1rem;
+      margin-bottom: 10px;
       color: #1a1a1a;
     }
 
     .tab-buttons {
       display: flex;
       justify-content: center;
-      gap: 8px;
-      margin-bottom: 15px;
+      gap: 6px;
+      margin-bottom: 12px;
     }
 
     .tab-btn {
       background: rgba(255, 255, 255, 0.9);
       border: 1px solid #ddd;
-      padding: 8px 14px;
-      border-radius: 20px;
-      font-size: 0.78rem;
+      padding: 6px 12px;
+      border-radius: 18px;
+      font-size: 0.75rem;
       font-weight: 600;
       cursor: pointer;
-      transition: all 0.2s ease;
     }
 
     .tab-btn.active {
@@ -238,134 +262,225 @@
       display: block;
     }
 
-    /* Game 1: Sticker Selector */
     .sticker-palette {
       display: flex;
       justify-content: center;
-      gap: 10px;
+      gap: 8px;
       flex-wrap: wrap;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
     .palette-item {
-      font-size: 1.5rem;
+      font-size: 1.4rem;
       background: #fff;
-      padding: 6px;
-      border-radius: 12px;
+      padding: 5px;
+      border-radius: 10px;
       cursor: pointer;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-      transition: transform 0.2s ease;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
     }
 
-    .palette-item:hover {
-      transform: scale(1.2);
-    }
+    .palette-item:hover { transform: scale(1.15); }
 
     .reset-btn {
       background: none;
       border: none;
-      font-size: 0.75rem;
-      color: #777;
+      font-size: 0.72rem;
+      color: #666;
       text-decoration: underline;
       cursor: pointer;
     }
 
-    /* Game 2: Matching Tiles */
-    .match-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 8px;
-      max-width: 260px;
-      margin: 0 auto 10px;
+    /* Live Photobooth Styles */
+    .photobooth-box {
+      text-align: center;
     }
 
-    .tile {
-      aspect-ratio: 1;
-      background: #fff;
+    .camera-preview {
+      width: 100%;
+      max-width: 220px;
+      height: 160px;
+      background: #111;
       border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.3rem;
+      object-fit: cover;
+      margin: 0 auto 8px;
+      display: block;
+      transform: scaleX(-1); /* Mirror view */
+    }
+
+    .booth-action-btn {
+      background: #111;
+      color: #fff;
+      border: none;
+      padding: 6px 14px;
+      border-radius: 15px;
+      font-size: 0.75rem;
+      font-weight: 600;
       cursor: pointer;
-      box-shadow: 0 3px 6px rgba(0,0,0,0.08);
-      user-select: none;
-      transition: transform 0.2s ease;
+      margin-top: 4px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
     }
 
-    .tile.flipped {
-      background: #fff0f3;
+    .booth-action-btn:hover {
+      background: #333;
     }
 
-    /* Music Section at Bottom */
+    /* Custom Spinning Vinyl Music Player */
     .music-section {
-      background: rgba(255, 255, 255, 0.75);
-      padding: 18px 16px;
-      border-radius: 25px;
+      background: rgba(255, 255, 255, 0.78);
+      padding: 16px;
+      border-radius: 22px;
       border: 1px solid rgba(255, 255, 255, 0.9);
-      margin-bottom: 22px;
+      margin-bottom: 18px;
     }
 
     .music-header {
       font-family: 'Comfortaa', cursive;
-      font-size: 1.05rem;
-      margin-bottom: 14px;
+      font-size: 1rem;
+      margin-bottom: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
-      color: #222;
+      gap: 6px;
     }
 
-    .track {
-      margin-bottom: 12px;
+    .player-card {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 10px 14px;
+      border-radius: 16px;
+      margin-bottom: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+    }
+
+    .vinyl {
+      width: 42px;
+      height: 42px;
+      background: #111;
+      border-radius: 50%;
+      border: 3px dashed #ffb6c1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .vinyl.spinning {
+      animation: spinVinyl 3s linear infinite;
+    }
+
+    @keyframes spinVinyl {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .track-info {
       text-align: left;
+      flex-grow: 1;
+      overflow: hidden;
     }
 
-    .track:last-child {
-      margin-bottom: 0;
-    }
-
-    .track p {
-      font-size: 0.82rem;
+    .track-info p {
+      font-size: 0.8rem;
       font-weight: 600;
-      margin-bottom: 5px;
       color: #333;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin-bottom: 4px;
     }
 
     audio {
       width: 100%;
-      height: 36px;
-      border-radius: 20px;
+      height: 30px;
+    }
+
+    /* Guestbook Section */
+    .guestbook-section {
+      background: rgba(255, 240, 245, 0.6);
+      padding: 15px;
+      border-radius: 22px;
+      border: 1px dashed rgba(255, 182, 193, 0.8);
+      margin-bottom: 18px;
+      text-align: left;
+    }
+
+    .guestbook-title {
+      font-family: 'Comfortaa', cursive;
+      font-size: 0.9rem;
+      margin-bottom: 8px;
+      text-align: center;
+      color: #444;
+    }
+
+    .guestbook-input {
+      width: 100%;
+      padding: 8px 12px;
+      border-radius: 12px;
+      border: 1px solid #ddd;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-size: 0.8rem;
+      margin-bottom: 8px;
+      background: #fff;
+      outline: none;
+    }
+
+    .guestbook-submit {
+      width: 100%;
+      background: #333;
+      color: #fff;
+      border: none;
+      padding: 8px;
+      border-radius: 12px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .notes-wall {
+      max-height: 80px;
+      overflow-y: auto;
+      margin-top: 8px;
+      font-size: 0.78rem;
+      color: #555;
+    }
+
+    .note-item {
+      background: #fff;
+      padding: 6px 10px;
+      border-radius: 8px;
+      margin-bottom: 5px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.05);
     }
 
     /* Navigation Buttons */
     .beacons-btn, .back-btn {
       display: block;
       width: 100%;
-      padding: 14px;
+      padding: 13px;
       border-radius: 50px;
       font-weight: 600;
       text-decoration: none;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       transition: all 0.3s ease;
       margin-bottom: 10px;
     }
 
-    /* Strictly Locked Beacons Button */
     .beacons-btn.locked {
-      background: #999999;
-      color: #ffffff;
+      background: #999;
+      color: #fff;
       cursor: not-allowed;
       pointer-events: none;
-      box-shadow: none;
       opacity: 0.75;
     }
 
-    /* Unlocked Beacons Button */
     .beacons-btn.unlocked {
-      background: #111111;
-      color: #ffffff;
+      background: #111;
+      color: #fff;
       cursor: pointer;
       box-shadow: 0 6px 18px rgba(0,0,0,0.25);
       animation: pulseGlow 1.5s infinite alternate;
@@ -381,10 +496,6 @@
       color: #333;
       border: 1px solid rgba(0,0,0,0.1);
     }
-
-    .back-btn:hover {
-      background: #ffffff;
-    }
   </style>
 </head>
 <body>
@@ -393,16 +504,23 @@
     <div class="tape-top"></div>
     <div class="tape-corner"></div>
     
-    <!-- Flower Stickers -->
     <span class="flower-lily-topleft">⚜️</span>
     <span class="flower-lily-topright">🌸</span>
 
-    <!-- Interactive Polaroid Area -->
+    <!-- Polaroid Area -->
     <div class="polaroid-container" id="polaroidContainer">
       <div class="polaroid" id="polaroidFrame">
-        <img src="3.jpg" alt="Profile Picture">
+        <img src="3.jpg" alt="Profile Picture" id="profileImg">
         <div class="polaroid-caption">fathima zemar ✨</div>
       </div>
+    </div>
+
+    <!-- Photo Booth Filters -->
+    <div class="booth-controls">
+      <button class="booth-btn" onclick="setFilter('')">Normal</button>
+      <button class="booth-btn" onclick="setFilter('filter-pink')">💖 Pink Glow</button>
+      <button class="booth-btn" onclick="setFilter('filter-sepia')">🎞️ Vintage</button>
+      <button class="booth-btn" onclick="setFilter('filter-bw')">🖤 B&W</button>
     </div>
 
     <h1>about me 🌷</h1>
@@ -415,37 +533,34 @@
     <div class="info-grid">
       <div class="info-box">
         <h3>🎀 myself</h3>
-        <p>A creative soul who loves aesthetics, soft vibes, and self-expression.</p>
+        <p>A creative soul who loves aesthetics and soft vibes.</p>
       </div>
-
       <div class="info-box">
         <h3>🎸 hobbies</h3>
-        <p>Playing guitar, listening to music, photo editing, and digital design.</p>
+        <p>Playing guitar, music, editing, and design.</p>
       </div>
-
       <div class="info-box">
         <h3>✨ interests</h3>
-        <p>Acoustic melodies, fashion trends, Pinterest aesthetics, and tech.</p>
+        <p>Acoustic melodies and Pinterest aesthetics.</p>
       </div>
-
       <div class="info-box">
         <h3>🤍 my type</h3>
-        <p>Kind-hearted, loyal, thoughtful people with a cute sense of humor.</p>
+        <p>Kind-hearted, loyal, with a cute sense of humor.</p>
       </div>
     </div>
 
-    <!-- Games Dashboard -->
+    <!-- Games & Interactive Corner -->
     <div class="games-section">
-      <div class="games-title">🎮 mini games corner</div>
+      <div class="games-title">🎮 mini games & booth</div>
       
       <div class="tab-buttons">
-        <button class="tab-btn active" onclick="switchGame('tab1', this)">Style My Polaroid</button>
-        <button class="tab-btn" onclick="switchGame('tab2', this)">Tile Match</button>
+        <button class="tab-btn active" onclick="switchGame('tab1', this)">Style Polaroid</button>
+        <button class="tab-btn" onclick="switchGame('tab2', this)">Live Cam Booth</button>
       </div>
 
-      <!-- Game 1: Style Polaroid -->
+      <!-- Tab 1: Sticker Decorator -->
       <div id="tab1" class="game-tab active">
-        <p style="font-size:0.78rem; color:#666; margin-bottom:10px;">Click stickers below to add them onto my Polaroid frame above!</p>
+        <p style="font-size:0.75rem; color:#666; margin-bottom:8px;">Click stickers to add onto your Polaroid!</p>
         <div class="sticker-palette">
           <span class="palette-item" onclick="addSticker('🎀')">🎀</span>
           <span class="palette-item" onclick="addSticker('⚜️')">⚜️</span>
@@ -457,55 +572,86 @@
         <button class="reset-btn" onclick="clearStickers()">Clear Stickers</button>
       </div>
 
-      <!-- Game 2: Tile Match -->
+      <!-- Tab 2: Live Webcam Photo Booth (Unlocks Beacons on photo take!) -->
       <div id="tab2" class="game-tab">
-        <p style="font-size:0.78rem; color:#666; margin-bottom:10px;">Win the tile game to securely unlock my Beacons profile!</p>
-        <div class="match-grid" id="matchGrid"></div>
-        <p id="gameStatus" style="font-size:0.8rem; font-weight:600; color:#333; margin-top:6px;"></p>
+        <div class="photobooth-box">
+          <p style="font-size:0.75rem; color:#666; margin-bottom:6px;">Take your own photo to unlock Beacons! 📸</p>
+          <video id="webcam" class="camera-preview" autoplay playsinline></video>
+          <canvas id="snapshotCanvas" style="display:none;"></canvas>
+          <button class="booth-action-btn" onclick="takeSnapshot()">Snap & Unlock Beacons! ✨</button>
+          <p id="boothStatus" style="font-size:0.75rem; font-weight:600; color:#333; margin-top:5px;"></p>
+        </div>
       </div>
     </div>
 
-    <!-- Playlist Section -->
+    <!-- Custom Vinyl Music Player -->
     <div class="music-section">
       <div class="music-header">
         <span>🎧</span> my fav playlist 🌺
       </div>
 
-      <div class="track">
-        <p>🎵 Doja Cat - Woman</p>
-        <audio controls src="Doja Cat - Woman (Lyrics).mp3"></audio>
+      <div class="player-card">
+        <div class="vinyl" id="vinyl1">💿</div>
+        <div class="track-info">
+          <p>Doja Cat - Woman</p>
+          <audio controls src="Doja Cat - Woman (Lyrics).mp3" onplay="spinRecord('vinyl1', true)" onpause="spinRecord('vinyl1', false)"></audio>
+        </div>
       </div>
 
-      <div class="track">
-        <p>🎵 Favorite Track #2</p>
-        <audio controls src="d61f-a7c3-4ff1-a3a3-bac43fb185ff.mp3"></audio>
+      <div class="player-card">
+        <div class="vinyl" id="vinyl2">💿</div>
+        <div class="track-info">
+          <p>Favorite Track #2</p>
+          <audio controls src="d61f-a7c3-4ff1-a3a3-bac43fb185ff.mp3" onplay="spinRecord('vinyl2', true)" onpause="spinRecord('vinyl2', false)"></audio>
+        </div>
       </div>
     </div>
 
-    <!-- Beacons Button (Strictly Locked Initially) -->
-    <a href="#" id="beaconsBtn" class="beacons-btn locked" onclick="checkUnlock(event)">🔒 Win Tile Match to Unlock Beacons!</a>
+    <!-- Guestbook Note Wall -->
+    <div class="guestbook-section">
+      <div class="guestbook-title">💌 leave a tiny note</div>
+      <input type="text" id="noteInput" class="guestbook-input" placeholder="Say something sweet..." maxlength="40">
+      <button class="guestbook-submit" onclick="addNote()">Leave Note ✨</button>
+      <div class="notes-wall" id="notesWall">
+        <div class="note-item">"Loving the aesthetic vibes! 🤍" - Visitor</div>
+      </div>
+    </div>
+
+    <!-- Beacons Button (Locked) -->
+    <a href="#" id="beaconsBtn" class="beacons-btn locked" onclick="checkUnlock(event)">🔒 Take a Photobooth Picture to Unlock Beacons!</a>
     <a href="index.html" class="back-btn">⬅ Back to Home</a>
   </div>
 
   <script>
     let isUnlocked = false;
 
-    // Tab Switching Logic
+    // Filter Switcher
+    function setFilter(className) {
+      const frame = document.getElementById('polaroidFrame');
+      frame.className = 'polaroid ' + className;
+    }
+
+    // Tab Switcher
     function switchGame(tabId, btn) {
       document.querySelectorAll('.game-tab').forEach(tab => tab.classList.remove('active'));
       document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
       document.getElementById(tabId).classList.add('active');
       btn.classList.add('active');
+
+      // Turn on webcam when tab2 is clicked
+      if (tabId === 'tab2') {
+        initWebcam();
+      }
     }
 
-    // Game 1: Add Sticker onto Polaroid
+    // Polaroid Stickers
     function addSticker(emoji) {
       const container = document.getElementById('polaroidContainer');
       const sticker = document.createElement('div');
       sticker.className = 'sticker-overlay';
       sticker.innerText = emoji;
-      sticker.style.top = (Math.random() * 100 + 20) + 'px';
-      sticker.style.left = (Math.random() * 100 + 20) + 'px';
+      sticker.style.top = (Math.random() * 90 + 10) + 'px';
+      sticker.style.left = (Math.random() * 90 + 10) + 'px';
       container.appendChild(sticker);
     }
 
@@ -513,55 +659,55 @@
       document.querySelectorAll('.sticker-overlay').forEach(el => el.remove());
     }
 
-    // Game 2: Matching Tiles
-    const items = ['🎸', '🎸', '🌸', '🌸', '🎧', '🎧', '🦋', '🦋'];
-    let flipped = [];
-    let matched = 0;
-
-    function initMatchGame() {
-      const grid = document.getElementById('matchGrid');
-      grid.innerHTML = '';
-      flipped = [];
-      matched = 0;
-      document.getElementById('gameStatus').innerText = '';
-      
-      const shuffled = [...items].sort(() => 0.5 - Math.random());
-      shuffled.forEach((symbol) => {
-        const tile = document.createElement('div');
-        tile.className = 'tile';
-        tile.dataset.symbol = symbol;
-        tile.innerText = '✨';
-        tile.onclick = () => flipTile(tile);
-        grid.appendChild(tile);
-      });
+    // Live Webcam Initialization
+    function initWebcam() {
+      const video = document.getElementById('webcam');
+      if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices.getUserMedia({ video: true })
+          .then(stream => {
+            video.srcObject = stream;
+          })
+          .catch(err => {
+            console.log("Webcam access denied or unavailable:", err);
+            document.getElementById('boothStatus').innerText = 'Camera access blocked or unavailable.';
+          });
+      }
     }
 
-    function flipTile(tile) {
-      if (isUnlocked || tile.classList.contains('flipped') || flipped.length === 2) return;
+    // Take Snapshot, update Polaroid picture, download image, and unlock Beacons!
+    function takeSnapshot() {
+      const video = document.getElementById('webcam');
+      const canvas = document.getElementById('snapshotCanvas');
       
-      tile.innerText = tile.dataset.symbol;
-      tile.classList.add('flipped');
-      flipped.push(tile);
-
-      if (flipped.length === 2) {
-        if (flipped[0].dataset.symbol === flipped[1].dataset.symbol) {
-          matched += 2;
-          flipped = [];
-          if (matched === items.length) {
-            isUnlocked = true;
-            document.getElementById('gameStatus').innerText = '🎉 Unlocked! Beacons button is ready! ✨';
-            unlockBeacons();
-          }
-        } else {
-          setTimeout(() => {
-            flipped.forEach(t => {
-              t.innerText = '✨';
-              t.classList.remove('flipped');
-            });
-            flipped = [];
-          }, 800);
-        }
+      if (!video.srcObject) {
+        alert('Please allow camera access to take a picture!');
+        return;
       }
+
+      canvas.width = video.videoWidth || 320;
+      canvas.height = video.videoHeight || 240;
+      const ctx = canvas.getContext('2d');
+      
+      // Flip horizontally to match mirror preview
+      ctx.translate(canvas.width, 0);
+      ctx.scale(-1, 1);
+      ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+      const dataURL = canvas.toDataURL('image/jpeg');
+      
+      // Update Polaroid image
+      document.getElementById('profileImg').src = dataURL;
+      
+      // Automatically trigger file download for user
+      const downloadLink = document.createElement('a');
+      downloadLink.href = dataURL;
+      downloadLink.download = 'fathima-photobooth.jpg';
+      downloadLink.click();
+
+      // Unlock Beacons
+      isUnlocked = true;
+      document.getElementById('boothStatus').innerText = '🎉 Photo saved & Beacons unlocked! ✨';
+      unlockBeacons();
     }
 
     function unlockBeacons() {
@@ -576,12 +722,33 @@
     function checkUnlock(event) {
       if (!isUnlocked) {
         event.preventDefault();
-        alert('🌸 Oops! You need to win the Tile Match game first to unlock my Beacons profile!');
+        alert('🌸 Oops! Take a picture in the Live Cam Booth first to unlock my Beacons profile!');
       }
     }
 
-    // Initialize tile game on start
-    initMatchGame();
+    // Vinyl Record Spin Effect
+    function spinRecord(vinylId, isPlaying) {
+      const vinyl = document.getElementById(vinylId);
+      if (isPlaying) {
+        vinyl.classList.add('spinning');
+      } else {
+        vinyl.classList.remove('spinning');
+      }
+    }
+
+    // Guestbook Note Addition
+    function addNote() {
+      const input = document.getElementById('noteInput');
+      const text = input.value.trim();
+      if (!text) return;
+
+      const wall = document.getElementById('notesWall');
+      const note = document.createElement('div');
+      note.className = 'note-item';
+      note.innerText = `"${text}" - Visitor`;
+      wall.prepend(note);
+      input.value = '';
+    }
   </script>
 
 </body>
