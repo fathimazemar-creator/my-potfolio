@@ -95,7 +95,7 @@
       50% { transform: translateY(-5px) rotate(-10deg); }
     }
 
-    /* Polaroid Booth Area */
+    /* Polaroid Area */
     .polaroid-container {
       position: relative;
       display: inline-block;
@@ -291,39 +291,60 @@
       cursor: pointer;
     }
 
-    /* Live Photobooth Styles */
+    /* Tile Match Game Grid */
+    .match-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 6px;
+      max-width: 240px;
+      margin: 0 auto 8px;
+    }
+
+    .tile {
+      aspect-ratio: 1;
+      background: #fff;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+      user-select: none;
+    }
+
+    .tile.flipped { background: #fff0f3; }
+
+    /* Live Photobooth Styles (Optional) */
     .photobooth-box {
       text-align: center;
     }
 
     .camera-preview {
       width: 100%;
-      max-width: 220px;
-      height: 160px;
+      max-width: 200px;
+      height: 140px;
       background: #111;
       border-radius: 12px;
       object-fit: cover;
-      margin: 0 auto 8px;
+      margin: 0 auto 6px;
       display: block;
-      transform: scaleX(-1); /* Mirror view */
+      transform: scaleX(-1);
     }
 
     .booth-action-btn {
       background: #111;
       color: #fff;
       border: none;
-      padding: 6px 14px;
+      padding: 5px 12px;
       border-radius: 15px;
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       font-weight: 600;
       cursor: pointer;
-      margin-top: 4px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      margin-top: 2px;
     }
 
-    .booth-action-btn:hover {
-      background: #333;
-    }
+    .booth-action-btn:hover { background: #333; }
 
     /* Custom Spinning Vinyl Music Player */
     .music-section {
@@ -515,7 +536,7 @@
       </div>
     </div>
 
-    <!-- Photo Booth Filters -->
+    <!-- Polaroid Booth Filters -->
     <div class="booth-controls">
       <button class="booth-btn" onclick="setFilter('')">Normal</button>
       <button class="booth-btn" onclick="setFilter('filter-pink')">💖 Pink Glow</button>
@@ -555,7 +576,8 @@
       
       <div class="tab-buttons">
         <button class="tab-btn active" onclick="switchGame('tab1', this)">Style Polaroid</button>
-        <button class="tab-btn" onclick="switchGame('tab2', this)">Live Cam Booth</button>
+        <button class="tab-btn" onclick="switchGame('tab2', this)">Tile Match</button>
+        <button class="tab-btn" onclick="switchGame('tab3', this)">Live Cam Booth</button>
       </div>
 
       <!-- Tab 1: Sticker Decorator -->
@@ -572,14 +594,21 @@
         <button class="reset-btn" onclick="clearStickers()">Clear Stickers</button>
       </div>
 
-      <!-- Tab 2: Live Webcam Photo Booth (Unlocks Beacons on photo take!) -->
+      <!-- Tab 2: Tile Match Game (Unlocks Beacons when won!) -->
       <div id="tab2" class="game-tab">
+        <p style="font-size:0.75rem; color:#666; margin-bottom:8px;">Win Tile Match to unlock Beacons! 🧩</p>
+        <div class="match-grid" id="matchGrid"></div>
+        <p id="gameStatus" style="font-size:0.78rem; font-weight:600; color:#333; margin-top:4px;"></p>
+      </div>
+
+      <!-- Tab 3: Live Webcam Photo Booth (Optional bonus!) -->
+      <div id="tab3" class="game-tab">
         <div class="photobooth-box">
-          <p style="font-size:0.75rem; color:#666; margin-bottom:6px;">Take your own photo to unlock Beacons! 📸</p>
+          <p style="font-size:0.75rem; color:#666; margin-bottom:6px;">Snap a photo & download it! 📸</p>
           <video id="webcam" class="camera-preview" autoplay playsinline></video>
           <canvas id="snapshotCanvas" style="display:none;"></canvas>
-          <button class="booth-action-btn" onclick="takeSnapshot()">Snap & Unlock Beacons! ✨</button>
-          <p id="boothStatus" style="font-size:0.75rem; font-weight:600; color:#333; margin-top:5px;"></p>
+          <button class="booth-action-btn" onclick="takeSnapshot()">Take & Download Photo ✨</button>
+          <p id="boothStatus" style="font-size:0.75rem; font-weight:600; color:#333; margin-top:4px;"></p>
         </div>
       </div>
     </div>
@@ -618,7 +647,7 @@
     </div>
 
     <!-- Beacons Button (Locked) -->
-    <a href="#" id="beaconsBtn" class="beacons-btn locked" onclick="checkUnlock(event)">🔒 Take a Photobooth Picture to Unlock Beacons!</a>
+    <a href="#" id="beaconsBtn" class="beacons-btn locked" onclick="checkUnlock(event)">🔒 Win Tile Match to Unlock Beacons!</a>
     <a href="index.html" class="back-btn">⬅ Back to Home</a>
   </div>
 
@@ -638,8 +667,7 @@
       document.getElementById(tabId).classList.add('active');
       btn.classList.add('active');
 
-      // Turn on webcam when tab2 is clicked
-      if (tabId === 'tab2') {
+      if (tabId === 'tab3') {
         initWebcam();
       }
     }
@@ -659,55 +687,55 @@
       document.querySelectorAll('.sticker-overlay').forEach(el => el.remove());
     }
 
-    // Live Webcam Initialization
-    function initWebcam() {
-      const video = document.getElementById('webcam');
-      if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-        navigator.mediaDevices.getUserMedia({ video: true })
-          .then(stream => {
-            video.srcObject = stream;
-          })
-          .catch(err => {
-            console.log("Webcam access denied or unavailable:", err);
-            document.getElementById('boothStatus').innerText = 'Camera access blocked or unavailable.';
-          });
-      }
+    // Tile Match Game
+    const items = ['🎸', '🎸', '🌸', '🌸', '🎧', '🎧', '🦋', '🦋'];
+    let flipped = [];
+    let matched = 0;
+
+    function initMatchGame() {
+      const grid = document.getElementById('matchGrid');
+      grid.innerHTML = '';
+      flipped = [];
+      matched = 0;
+      document.getElementById('gameStatus').innerText = '';
+      
+      const shuffled = [...items].sort(() => 0.5 - Math.random());
+      shuffled.forEach((symbol) => {
+        const tile = document.createElement('div');
+        tile.className = 'tile';
+        tile.dataset.symbol = symbol;
+        tile.innerText = '✨';
+        tile.onclick = () => flipTile(tile);
+        grid.appendChild(tile);
+      });
     }
 
-    // Take Snapshot, update Polaroid picture, download image, and unlock Beacons!
-    function takeSnapshot() {
-      const video = document.getElementById('webcam');
-      const canvas = document.getElementById('snapshotCanvas');
+    function flipTile(tile) {
+      if (isUnlocked || tile.classList.contains('flipped') || flipped.length === 2) return;
       
-      if (!video.srcObject) {
-        alert('Please allow camera access to take a picture!');
-        return;
+      tile.innerText = tile.dataset.symbol;
+      tile.classList.add('flipped');
+      flipped.push(tile);
+
+      if (flipped.length === 2) {
+        if (flipped[0].dataset.symbol === flipped[1].dataset.symbol) {
+          matched += 2;
+          flipped = [];
+          if (matched === items.length) {
+            isUnlocked = true;
+            document.getElementById('gameStatus').innerText = '🎉 Unlocked! Beacons is ready! ✨';
+            unlockBeacons();
+          }
+        } else {
+          setTimeout(() => {
+            flipped.forEach(t => {
+              t.innerText = '✨';
+              t.classList.remove('flipped');
+            });
+            flipped = [];
+          }, 800);
+        }
       }
-
-      canvas.width = video.videoWidth || 320;
-      canvas.height = video.videoHeight || 240;
-      const ctx = canvas.getContext('2d');
-      
-      // Flip horizontally to match mirror preview
-      ctx.translate(canvas.width, 0);
-      ctx.scale(-1, 1);
-      ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-
-      const dataURL = canvas.toDataURL('image/jpeg');
-      
-      // Update Polaroid image
-      document.getElementById('profileImg').src = dataURL;
-      
-      // Automatically trigger file download for user
-      const downloadLink = document.createElement('a');
-      downloadLink.href = dataURL;
-      downloadLink.download = 'fathima-photobooth.jpg';
-      downloadLink.click();
-
-      // Unlock Beacons
-      isUnlocked = true;
-      document.getElementById('boothStatus').innerText = '🎉 Photo saved & Beacons unlocked! ✨';
-      unlockBeacons();
     }
 
     function unlockBeacons() {
@@ -722,8 +750,46 @@
     function checkUnlock(event) {
       if (!isUnlocked) {
         event.preventDefault();
-        alert('🌸 Oops! Take a picture in the Live Cam Booth first to unlock my Beacons profile!');
+        alert('🌸 Oops! Win the Tile Match game first to unlock my Beacons profile!');
       }
+    }
+
+    // Live Webcam Initialization (Optional Booth)
+    function initWebcam() {
+      const video = document.getElementById('webcam');
+      if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+        navigator.mediaDevices.getUserMedia({ video: true })
+          .then(stream => { video.srcObject = stream; })
+          .catch(err => {
+            console.log("Webcam unavailable:", err);
+            document.getElementById('boothStatus').innerText = 'Camera access blocked.';
+          });
+      }
+    }
+
+    function takeSnapshot() {
+      const video = document.getElementById('webcam');
+      const canvas = document.getElementById('snapshotCanvas');
+      if (!video.srcObject) {
+        alert('Please allow camera access first!');
+        return;
+      }
+      canvas.width = video.videoWidth || 320;
+      canvas.height = video.videoHeight || 240;
+      const ctx = canvas.getContext('2d');
+      ctx.translate(canvas.width, 0);
+      ctx.scale(-1, 1);
+      ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+
+      const dataURL = canvas.toDataURL('image/jpeg');
+      document.getElementById('profileImg').src = dataURL;
+      
+      const downloadLink = document.createElement('a');
+      downloadLink.href = dataURL;
+      downloadLink.download = 'fathima-photobooth.jpg';
+      downloadLink.click();
+
+      document.getElementById('boothStatus').innerText = '📸 Photo saved successfully! ✨';
     }
 
     // Vinyl Record Spin Effect
@@ -749,6 +815,8 @@
       wall.prepend(note);
       input.value = '';
     }
+
+    initMatchGame();
   </script>
 
 </body>
